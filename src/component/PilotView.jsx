@@ -120,7 +120,7 @@ export default function PilotView() {
           }}
         >
           <Link
-            to={"/AddEmployee"}
+            to={"/pilots/AddEmployee"}
             style={{
               textDecoration: "none",
               width: "100%",

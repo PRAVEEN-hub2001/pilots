@@ -62,7 +62,7 @@ export default function AddEmployeeDetail() {
           }}
         >
           <Link
-            to={"/"}
+            to={"/pilots/"}
             style={{
               textDecoration: "none",
               width: "100%",
