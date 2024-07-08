@@ -4,7 +4,6 @@ import axios from "axios";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import man from "../man.png";
 
 axios.defaults.baseURL = "http://localhost:8080";
 delete L.Icon.Default.prototype._getIconUrl;
