@@ -1,5 +1,45 @@
 .App {
   text-align: center;
+  align-items: center;
+  background-color: #B5C18E;
+  height: 800px;
+  font-style: italic;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+  color: #059212;
+}
+
+p {
+  color: red;
+}
+
+label {
+  font-weight: 800;
+  color: #604CC3;
+}
+
+input {
+  height: 20px;
+  border-radius: 5px;
+  border: none;
+  padding: 2px 5px;
+}
+
+table {
+  margin: 0 40%;
+}
+
+td {
+  padding: 8px;
+  text-align: left;
+}
+
+.btn:hover {
+  background-color: #282c34;
+  color: antiquewhite !important;
+  cursor: pointer;
 }
 
 .App-logo {
@@ -32,6 +72,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
