@@ -151,6 +151,13 @@ export default function PilotView() {
                 >
                   <Popup>
                     <div>
+                      <img
+                        src={pilot.profileImage}
+                        alt="profile_image"
+                        width={"30px"}
+                        height={"30px"}
+                        style={{ borderRadius: "50%" }}
+                      ></img>
                       <h3 style={{ textAlign: "center", color: "#49108B" }}>
                         {capitalizeFirstLetter(pilot.name)}
                       </h3>

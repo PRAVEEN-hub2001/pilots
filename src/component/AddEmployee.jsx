@@ -5,6 +5,7 @@ export default function AddEmployeeDetail() {
   const [pilotAdd, setPilotAdd] = useState({
     name: "",
     workExperience: 0,
+    profile_img: "",
     location: "",
     coordinates: {
       lat: 0,
@@ -13,6 +14,18 @@ export default function AddEmployeeDetail() {
   });
   const [radioBtn, setRadiobBtn] = useState(false);
   const [message, setMessage] = useState("");
+
+  function convertToBase64(e) {
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      console.log(reader.result);
+      setPilotAdd({ ...pilotAdd, profile_img: reader.result });
+    };
+    reader.onerror = (error) => {
+      alert("Error while reading image!");
+    };
+  }
   async function submit(e) {
     e.preventDefault();
     setMessage("Please Wait...");
@@ -23,6 +36,7 @@ export default function AddEmployeeDetail() {
         setPilotAdd({
           name: "",
           workExperience: 0,
+          profile_img: "",
           location: "",
           coordinates: {
             lat: 0,
@@ -96,6 +110,28 @@ export default function AddEmployeeDetail() {
                   });
                 }}
               ></input>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {" "}
+              <label>Profile Image</label>
+            </td>
+            <td style={{ display: "flex" }}>
+              <input
+                type="file"
+                accept="image/"
+                required
+                min={0}
+                onChange={convertToBase64}
+              ></input>
+              <img
+                src={pilotAdd.profile_img}
+                alt="profile_image"
+                width={"30px"}
+                height={"30px"}
+                style={{ borderRadius: "20%", border: "1px solid black" }}
+              ></img>
             </td>
           </tr>
           <tr>
@@ -203,6 +239,7 @@ export default function AddEmployeeDetail() {
               setPilotAdd({
                 name: "",
                 workExperience: 0,
+                profile_img: "",
                 location: "",
                 coordinates: {
                   lat: 0,
