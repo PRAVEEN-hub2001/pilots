@@ -42,25 +42,9 @@ export default function AddEmployeeDetail() {
   }
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-        }}
-      >
+      <div className="header">
         <h1>Employee Details</h1>
-        <button
-          style={{
-            position: "absolute",
-            right: "5%",
-            height: "30px",
-            borderRadius: "5px",
-            border: "none",
-            padding: "5px 15px",
-          }}
-        >
+        <button>
           <Link
             to={"/pilots/"}
             style={{
@@ -188,16 +172,7 @@ export default function AddEmployeeDetail() {
             </tr>
           )}
         </table>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-            width: "20%",
-            marginLeft: "40%",
-            marginTop: "30px",
-          }}
-        >
+        <div className="btn-add-employee">
           {" "}
           <button
             className="btn"

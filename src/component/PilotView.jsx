@@ -101,24 +101,9 @@ export default function PilotView() {
 
   return (
     <div className="App">
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-        }}
-      >
+      <div className="header">
         <h1>Drone Flying Pilots</h1>
-        <button
-          style={{
-            position: "absolute",
-            right: "5%",
-            height: "30px",
-            borderRadius: "5px",
-            border: "none",
-          }}
-        >
+        <button>
           <Link
             to={"/pilots/AddEmployee"}
             style={{
@@ -143,12 +128,7 @@ export default function PilotView() {
         onChange={handleRangeChange}
       />
       {adminLocation ? (
-        <div
-          style={{
-            margin: "40px 20% 0 20%",
-            width: "60%",
-          }}
-        >
+        <div className="map-view">
           <MapContainer
             center={[adminLocation.lat, adminLocation.lng]}
             zoom={10}
