@@ -150,7 +150,13 @@ export default function PilotView() {
                   position={[pilot.coordinates.lat, pilot.coordinates.lng]}
                 >
                   <Popup>
-                    <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexDirection: "column",
+                      }}
+                    >
                       <img
                         src={pilot.profileImage}
                         alt="profile_image"
@@ -158,14 +164,31 @@ export default function PilotView() {
                         height={"30px"}
                         style={{ borderRadius: "50%" }}
                       ></img>
-                      <h3 style={{ textAlign: "center", color: "#49108B" }}>
+                      <h3
+                        style={{
+                          textAlign: "center",
+                          color: "#49108B",
+                          margin: "2px 0",
+                        }}
+                      >
                         {capitalizeFirstLetter(pilot.name)}
                       </h3>
-                      <span style={{ textAlign: "center", color: "#E26EE5" }}>
+                      <span
+                        style={{
+                          textAlign: "center",
+                          color: "#E26EE5",
+                          margin: "1px 0",
+                        }}
+                      >
                         Work Experience: {pilot.workExperience} years
                       </span>
-                      <br />
-                      <span style={{ textAlign: "center", color: "#E26EE5" }}>
+                      <span
+                        style={{
+                          textAlign: "center",
+                          color: "#E26EE5",
+                          margin: "1px 0",
+                        }}
+                      >
                         Location: {capitalizeFirstLetter(pilot.location)}
                       </span>
                     </div>

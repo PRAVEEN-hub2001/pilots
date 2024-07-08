@@ -19,7 +19,6 @@ export default function AddEmployeeDetail() {
     var reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = () => {
-      console.log(reader.result);
       setPilotAdd({ ...pilotAdd, profile_img: reader.result });
     };
     reader.onerror = (error) => {
