@@ -122,16 +122,17 @@ export default function AddEmployeeDetail() {
                 type="file"
                 accept="image/"
                 required
-                min={0}
                 onChange={convertToBase64}
               ></input>
-              <img
-                src={pilotAdd.profile_img}
-                alt="profile_image"
-                width={"30px"}
-                height={"30px"}
-                style={{ borderRadius: "20%", border: "1px solid black" }}
-              ></img>
+              {pilotAdd.profile_img && (
+                <img
+                  src={pilotAdd.profile_img}
+                  alt="profile_image"
+                  width={"30px"}
+                  height={"30px"}
+                  style={{ borderRadius: "20%", border: "1px solid black" }}
+                ></img>
+              )}
             </td>
           </tr>
           <tr>
