@@ -109,7 +109,7 @@ export default function PilotView() {
         <h1>Drone Flying Pilots</h1>
         <button>
           <Link
-            to={"/pilots/AddEmployee"}
+            to={"/AddEmployee"}
             style={{
               textDecoration: "none",
               width: "100%",
@@ -161,13 +161,15 @@ export default function PilotView() {
                         flexDirection: "column",
                       }}
                     >
-                      <img
-                        src={pilot.profileImage}
-                        alt="profile_image"
-                        width={"30px"}
-                        height={"30px"}
-                        style={{ borderRadius: "50%" }}
-                      ></img>
+                      {pilot.profileImage && (
+                        <img
+                          src={pilot.profileImage}
+                          alt="profile_image"
+                          width={"30px"}
+                          height={"30px"}
+                          style={{ borderRadius: "50%" }}
+                        ></img>
+                      )}
                       <h3
                         style={{
                           textAlign: "center",

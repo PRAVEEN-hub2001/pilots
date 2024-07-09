@@ -7,8 +7,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/pilots/" element={<PilotView />} />
-          <Route path="/pilots/AddEmployee" element={<AddEmployeeDetail />} />
+          <Route path="/" element={<PilotView />} />
+          <Route path="/AddEmployee" element={<AddEmployeeDetail />} />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Routes>
       </BrowserRouter>

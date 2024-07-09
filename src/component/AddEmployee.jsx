@@ -62,7 +62,7 @@ export default function AddEmployeeDetail() {
         <h1>Employee Details</h1>
         <button>
           <Link
-            to={"/pilots/"}
+            to={"/"}
             style={{
               textDecoration: "none",
               width: "100%",
