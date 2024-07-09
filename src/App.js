@@ -4,15 +4,14 @@ import PilotView from "./component/PilotView";
 import AddEmployeeDetail from "./component/AddEmployee";
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
         <Routes>
           <Route path="/" element={<PilotView />} />
           <Route path="/AddEmployee" element={<AddEmployeeDetail />} />
-          {/* <Route path="*" element={<NoPage />} /> */}
         </Routes>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
