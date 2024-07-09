@@ -29,7 +29,10 @@ export default function AddEmployeeDetail() {
     e.preventDefault();
     setMessage("Please Wait...");
     try {
-      const response = await axios.post("/api/pilots", pilotAdd);
+      const response = await axios.post(
+        "https://pilots-back-end.onrender.com/api/pilots",
+        pilotAdd
+      );
       if (response.status === 200) {
         setMessage(response.data.message);
         setPilotAdd({
@@ -75,138 +78,144 @@ export default function AddEmployeeDetail() {
       </div>
       <form onSubmit={submit}>
         <table>
-          <tr>
-            <td>
-              {" "}
-              <label>Name</label>
-            </td>
-            <td>
-              <input
-                type="text"
-                value={pilotAdd.name}
-                required
-                onChange={(e) => {
-                  setPilotAdd({ ...pilotAdd, name: e.target.value.trim() });
-                }}
-              ></input>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              {" "}
-              <label>Experience</label>
-            </td>
-            <td>
-              <input
-                type="number"
-                value={pilotAdd.workExperience}
-                required
-                min={0}
-                onChange={(e) => {
-                  setPilotAdd({
-                    ...pilotAdd,
-                    workExperience: e.target.value,
-                  });
-                }}
-              ></input>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              {" "}
-              <label>Profile Image</label>
-            </td>
-            <td style={{ display: "flex" }}>
-              <input
-                type="file"
-                accept="image/"
-                required
-                onChange={convertToBase64}
-              ></input>
-              {pilotAdd.profile_img && (
-                <img
-                  src={pilotAdd.profile_img}
-                  alt="profile_image"
-                  width={"30px"}
-                  height={"30px"}
-                  style={{ borderRadius: "20%", border: "1px solid black" }}
-                ></img>
-              )}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              {" "}
-              <label>Location</label>
-            </td>
-            <td>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <input
-                  type="radio"
-                  value={"city"}
-                  checked={!radioBtn}
-                  required
-                  onChange={(e) => {
-                    setRadiobBtn(e.target.checked ? false : true);
-                    setPilotAdd({
-                      ...pilotAdd,
-                      coordinates: { lat: 0, lng: 0 },
-                    });
-                  }}
-                ></input>
-                Enter City
-              </div>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <input
-                  type="radio"
-                  value="current"
-                  checked={radioBtn}
-                  required
-                  onChange={(e) => {
-                    setRadiobBtn(e.target.checked ? true : false);
-                    if ("geolocation" in navigator) {
-                      navigator.geolocation.getCurrentPosition(
-                        (position) => {
-                          const { latitude, longitude } = position.coords;
-                          setPilotAdd({
-                            ...pilotAdd,
-                            coordinates: { lat: latitude, lng: longitude },
-                          });
-                        },
-                        (error) => {
-                          alert("Error while getting location!");
-                        }
-                      );
-                    } else {
-                      alert("Please enable the location...");
-                    }
-                  }}
-                ></input>
-                Current Location
-              </div>
-            </td>
-          </tr>
-          {!radioBtn && (
+          <thead>
             <tr>
               <td>
                 {" "}
-                <label>City</label>
+                <label>Name</label>
               </td>
               <td>
                 <input
                   type="text"
-                  value={pilotAdd.location}
+                  value={pilotAdd.name}
                   required
+                  onChange={(e) => {
+                    setPilotAdd({ ...pilotAdd, name: e.target.value.trim() });
+                  }}
+                ></input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                {" "}
+                <label>Experience</label>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  value={pilotAdd.workExperience}
+                  required
+                  min={0}
                   onChange={(e) => {
                     setPilotAdd({
                       ...pilotAdd,
-                      location: e.target.value.trim(),
+                      workExperience: e.target.value,
                     });
                   }}
                 ></input>
               </td>
             </tr>
-          )}
+            <tr>
+              <td>
+                {" "}
+                <label>Profile Image</label>
+              </td>
+              <td
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <input
+                  type="file"
+                  accept="image/"
+                  onChange={convertToBase64}
+                ></input>
+                {pilotAdd.profile_img && (
+                  <img
+                    src={pilotAdd.profile_img}
+                    alt="profile_image"
+                    width={"30px"}
+                    height={"30px"}
+                    style={{ borderRadius: "30%", border: "1px solid black" }}
+                  ></img>
+                )}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                {" "}
+                <label>Location</label>
+              </td>
+              <td>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <input
+                    type="radio"
+                    value={"city"}
+                    checked={!radioBtn}
+                    required
+                    onChange={(e) => {
+                      setRadiobBtn(e.target.checked ? false : true);
+                      setPilotAdd({
+                        ...pilotAdd,
+                        coordinates: { lat: 0, lng: 0 },
+                      });
+                    }}
+                  ></input>
+                  Enter City
+                </div>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <input
+                    type="radio"
+                    value="current"
+                    checked={radioBtn}
+                    required
+                    onChange={(e) => {
+                      setRadiobBtn(e.target.checked ? true : false);
+                      if ("geolocation" in navigator) {
+                        navigator.geolocation.getCurrentPosition(
+                          (position) => {
+                            const { latitude, longitude } = position.coords;
+                            setPilotAdd({
+                              ...pilotAdd,
+                              coordinates: { lat: latitude, lng: longitude },
+                            });
+                          },
+                          (error) => {
+                            alert("Error while getting location!");
+                          }
+                        );
+                      } else {
+                        alert("Please enable the location...");
+                      }
+                    }}
+                  ></input>
+                  Current Location
+                </div>
+              </td>
+            </tr>
+            {!radioBtn && (
+              <tr>
+                <td>
+                  {" "}
+                  <label>City</label>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    value={pilotAdd.location}
+                    required
+                    onChange={(e) => {
+                      setPilotAdd({
+                        ...pilotAdd,
+                        location: e.target.value.trim(),
+                      });
+                    }}
+                  ></input>
+                </td>
+              </tr>
+            )}
+          </thead>
         </table>
         <div className="btn-add-employee">
           {" "}

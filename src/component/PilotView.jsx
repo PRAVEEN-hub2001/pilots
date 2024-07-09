@@ -5,7 +5,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
-axios.defaults.baseURL = "https://pilots-back-end.onrender.com";
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -27,7 +26,9 @@ export default function PilotView() {
   useEffect(() => {
     const fetchPilots = async () => {
       try {
-        const response = await axios.get("/api/pilots");
+        const response = await axios.get(
+          "https://pilots-back-end.onrender.com/api/pilots"
+        );
         setPilots(response.data);
       } catch (error) {
         console.error("Error fetching pilots:", error.message);
@@ -86,12 +87,15 @@ export default function PilotView() {
 
   const calculateDistance = async (lat1, lon1, lat2, lon2) => {
     try {
-      const response = await axios.post("/api/distance", {
-        lat1,
-        lon1,
-        lat2,
-        lon2,
-      });
+      const response = await axios.post(
+        "https://pilots-back-end.onrender.com/api/distance",
+        {
+          lat1,
+          lon1,
+          lat2,
+          lon2,
+        }
+      );
       return response.data.distance;
     } catch (error) {
       console.error("Error calculating distance:", error.message);
