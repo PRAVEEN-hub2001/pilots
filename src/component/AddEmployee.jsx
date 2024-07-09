@@ -172,6 +172,10 @@ export default function AddEmployeeDetail() {
                     required
                     onChange={(e) => {
                       setRadiobBtn(e.target.checked ? true : false);
+                      setPilotAdd({
+                        ...pilotAdd,
+                        location: "",
+                      });
                       if ("geolocation" in navigator) {
                         navigator.geolocation.getCurrentPosition(
                           (position) => {
